@@ -61,23 +61,12 @@ const webpackConfig = {
         ],
       };
 
-      // Configure CSS Minimizer to use lightningcss instead of cssnano
+      // Disable CSS minification to avoid "/" character issues in production builds
+      // This is a workaround for CSS Minimizer Plugin failing on grid-column and aspect-ratio values
       if (process.env.NODE_ENV === 'production') {
-        const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-        
-        // Find and replace the CSS minimizer plugin
-        const minimizerIndex = webpackConfig.optimization.minimizer.findIndex(
-          plugin => plugin.constructor.name === 'CssMinimizerPlugin'
+        webpackConfig.optimization.minimizer = webpackConfig.optimization.minimizer.filter(
+          plugin => plugin.constructor.name !== 'CssMinimizerPlugin'
         );
-        
-        if (minimizerIndex !== -1) {
-          webpackConfig.optimization.minimizer[minimizerIndex] = new CssMinimizerPlugin({
-            minify: CssMinimizerPlugin.lightningCssMinify,
-            minimizerOptions: {
-              targets: { ie: 11 },
-            },
-          });
-        }
       }
 
       // Add health check plugin to webpack if enabled
