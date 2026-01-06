@@ -14759,3 +14759,38 @@ a,
    ======================================== */
 
 
+
+/* Product Sold Count */
+.product-sold-count {
+  font-size: 13px;
+  color: #00d9ff;
+  font-weight: 500;
+  margin: 8px 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.product-sold-count .sold-icon {
+  font-size: 14px;
+  animation: pulse-fire 2s ease-in-out infinite;
+}
+
+@keyframes pulse-fire {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .product-sold-count {
+    font-size: 12px;
+    margin: 6px 0 10px 0;
+  }
+}
