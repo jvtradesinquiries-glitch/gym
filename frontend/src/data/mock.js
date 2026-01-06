@@ -44,7 +44,8 @@ export const shirts = [
     price: 45,
     originalPrice: 65,
     sizes: ["XS", "S", "M", "L"],
-    status: "available"
+    status: "available",
+    soldCount: 425
   },
   {
     id: 2,
@@ -59,7 +60,8 @@ export const shirts = [
     price: 45,
     originalPrice: 65,
     sizes: ["XS", "S", "M", "L"],
-    status: "available"
+    status: "available",
+    soldCount: 312
   },
   {
     id: 3,
@@ -74,7 +76,8 @@ export const shirts = [
     price: 45,
     originalPrice: 65,
     sizes: ["XS", "S", "M", "L"],
-    status: "available"
+    status: "available",
+    soldCount: 267
   },
   {
     id: 4,
@@ -89,7 +92,8 @@ export const shirts = [
     price: 45,
     originalPrice: 65,
     sizes: ["XS", "S", "M", "L"],
-    status: "available"
+    status: "available",
+    soldCount: 183
   }
 ];
 
