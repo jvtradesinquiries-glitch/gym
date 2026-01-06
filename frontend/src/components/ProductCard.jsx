@@ -31,9 +31,10 @@ const ProductCard = ({ product, onClick }) => {
       <div className="product-image-wrapper-shop">
         {product.images?.[0] ? (
           <img 
-            src={product.images[0]} 
+            src={`${process.env.REACT_APP_BACKEND_URL}/api/proxy-image?url=${encodeURIComponent(product.images[0])}`}
             alt={product.name}
             className="product-image-shop"
+            loading="lazy"
           />
         ) : (
           <div className="product-placeholder-shop">
