@@ -61,32 +61,23 @@ const webpackConfig = {
         ],
       };
 
-      // Configure CSS minification to handle forward slashes properly
+      // Configure CSS Minimizer to use lightningcss instead of cssnano
       if (process.env.NODE_ENV === 'production') {
         const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
         
-        webpackConfig.optimization = {
-          ...webpackConfig.optimization,
-          minimizer: webpackConfig.optimization.minimizer.map(plugin => {
-            if (plugin.constructor.name === 'CssMinimizerPlugin') {
-              return new CssMinimizerPlugin({
-                minimizerOptions: {
-                  preset: [
-                    'default',
-                    {
-                      normalizeWhitespace: true,
-                      discardComments: { removeAll: true },
-                      // Disable minification of grid values and aspect-ratios to prevent "/" issues
-                      minifyFontValues: false,
-                      minifyGradients: false,
-                    },
-                  ],
-                },
-              });
-            }
-            return plugin;
-          }),
-        };
+        // Find and replace the CSS minimizer plugin
+        const minimizerIndex = webpackConfig.optimization.minimizer.findIndex(
+          plugin => plugin.constructor.name === 'CssMinimizerPlugin'
+        );
+        
+        if (minimizerIndex !== -1) {
+          webpackConfig.optimization.minimizer[minimizerIndex] = new CssMinimizerPlugin({
+            minify: CssMinimizerPlugin.lightningCssMinify,
+            minimizerOptions: {
+              targets: { ie: 11 },
+            },
+          });
+        }
       }
 
       // Add health check plugin to webpack if enabled
