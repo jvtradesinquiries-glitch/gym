@@ -14061,7 +14061,7 @@ a,
 
 /* Fixed aspect ratios prevent content jumps */
 .product-image-wrapper {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3/4;
 }
 
 /* Skeleton loading states */
