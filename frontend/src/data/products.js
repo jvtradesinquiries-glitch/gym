@@ -108,7 +108,7 @@ export const products = [
     inStock: true,
     stock: { XS: 6, S: 10, M: 14, L: 18, XL: 12 },
     featured: true,
-    soldCount: 198
+    soldCount: 357
   },
   {
     id: 6,
@@ -129,7 +129,7 @@ export const products = [
     womensSizes: ['XS', 'S', 'M', 'L'],
     sizes: ['S', 'M', 'L', 'XL'], // Default to men's
     inStock: true,
-    stock: { XS: 5, S: 8, M: 12, L: 15, XL: 10 },
+    stock: { XS: 4, S: 8, M: 10, L: 14, XL: 10 },
     featured: true,
     soldCount: 115
   }
