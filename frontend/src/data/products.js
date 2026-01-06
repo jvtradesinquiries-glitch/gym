@@ -21,7 +21,8 @@ export const products = [
     inStock: true,
     stock: { XS: 5, S: 2, M: 8, L: 15 },
     featured: true,
-    mostPopular: true
+    mostPopular: true,
+    soldCount: 425
   },
   {
     id: 2,
@@ -41,7 +42,8 @@ export const products = [
     sizes: ['XS', 'S', 'M', 'L'],
     inStock: true,
     stock: { XS: 8, S: 10, M: 12, L: 18 },
-    featured: true
+    featured: true,
+    soldCount: 312
   },
   {
     id: 3,
@@ -61,7 +63,8 @@ export const products = [
     sizes: ['XS', 'S', 'M', 'L'],
     inStock: true,
     stock: { XS: 10, S: 12, M: 15, L: 20 },
-    featured: true
+    featured: true,
+    soldCount: 267
   },
   {
     id: 4,
@@ -80,7 +83,8 @@ export const products = [
     sizes: ['XS', 'S', 'M', 'L'],
     inStock: true,
     stock: { XS: 6, S: 14, M: 18, L: 22 },
-    featured: true
+    featured: true,
+    soldCount: 183
   },
   // Performance Shorts (with Men's/Women's option)
   {
