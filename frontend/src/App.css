@@ -11735,7 +11735,7 @@ body {
 }
 
 .chart-card.full-width {
-  grid-column: 1 / -1;
+  grid-column: 1/-1;
 }
 
 .chart-card h3 {
