@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from './ui/badge';
 import { Star } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
 
 const ProductCard = ({ product, onClick }) => {
   const navigate = useNavigate();
