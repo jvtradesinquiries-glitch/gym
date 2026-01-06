@@ -114,7 +114,8 @@ export const shorts = [
     mensSizes: ["S", "M", "L", "XL"],
     womensSizes: ["XS", "S", "M", "L"],
     sizes: ["S", "M", "L", "XL"],
-    status: "available"
+    status: "available",
+    soldCount: 198
   },
   {
     id: 6,
@@ -131,7 +132,8 @@ export const shorts = [
     mensSizes: ["S", "M", "L", "XL"],
     womensSizes: ["XS", "S", "M", "L"],
     sizes: ["S", "M", "L", "XL"],
-    status: "available"
+    status: "coming_soon",
+    soldCount: 115
   }
 ];
 
