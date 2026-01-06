@@ -61,7 +61,7 @@ export const shirts = [
     originalPrice: 65,
     sizes: ["XS", "S", "M", "L"],
     status: "available",
-    soldCount: 312
+    soldCount: 183
   },
   {
     id: 3,
@@ -77,7 +77,7 @@ export const shirts = [
     originalPrice: 65,
     sizes: ["XS", "S", "M", "L"],
     status: "available",
-    soldCount: 267
+    soldCount: 298
   },
   {
     id: 4,
@@ -93,7 +93,7 @@ export const shirts = [
     originalPrice: 65,
     sizes: ["XS", "S", "M", "L"],
     status: "available",
-    soldCount: 183
+    soldCount: 201
   }
 ];
 
