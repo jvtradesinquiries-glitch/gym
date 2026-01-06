@@ -31,10 +31,12 @@ const ProductCard = ({ product, onClick }) => {
     >
       <div className="product-image-wrapper-shop">
         {product.images?.[0] ? (
-          <img 
+          <OptimizedImage
             src={product.images[0]} 
             alt={product.name}
             className="product-image-shop"
+            placeholder="blur"
+            priority={product.mostPopular}
           />
         ) : (
           <div className="product-placeholder-shop">
