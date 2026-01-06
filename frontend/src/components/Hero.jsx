@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Button } from './ui/button';
 import { heroProduct } from '../data/mock';
 import { getSanitizedImage, preloadCriticalImages } from '../utils/imageSanitizer';
-import OptimizedImage from './OptimizedImage';
 
 const Hero = ({ onEarlyAccessClick }) => {
   const [showBack, setShowBack] = useState(false);
