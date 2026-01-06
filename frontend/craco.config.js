@@ -61,11 +61,31 @@ const webpackConfig = {
         ],
       };
 
-      // Disable CSS minification to debug build errors
+      // Configure CSS minification to handle forward slashes properly
       if (process.env.NODE_ENV === 'production') {
+        const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+        
         webpackConfig.optimization = {
           ...webpackConfig.optimization,
-          minimize: false,
+          minimizer: webpackConfig.optimization.minimizer.map(plugin => {
+            if (plugin.constructor.name === 'CssMinimizerPlugin') {
+              return new CssMinimizerPlugin({
+                minimizerOptions: {
+                  preset: [
+                    'default',
+                    {
+                      normalizeWhitespace: true,
+                      discardComments: { removeAll: true },
+                      // Disable minification of grid values and aspect-ratios to prevent "/" issues
+                      minifyFontValues: false,
+                      minifyGradients: false,
+                    },
+                  ],
+                },
+              });
+            }
+            return plugin;
+          }),
         };
       }
 
