@@ -3585,7 +3585,7 @@ body {
 
 @media (max-width: 768px) {
   .footer-brand {
-    grid-column: 1 / -1;
+    grid-column: 1/-1;
     max-width: none;
   }
 }
