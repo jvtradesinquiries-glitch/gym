@@ -61,6 +61,14 @@ const webpackConfig = {
         ],
       };
 
+      // Disable CSS minification to debug build errors
+      if (process.env.NODE_ENV === 'production') {
+        webpackConfig.optimization = {
+          ...webpackConfig.optimization,
+          minimize: false,
+        };
+      }
+
       // Add health check plugin to webpack if enabled
       if (config.enableHealthCheck && healthPluginInstance) {
         webpackConfig.plugins.push(healthPluginInstance);
