@@ -132,7 +132,7 @@ export const shorts = [
     mensSizes: ["S", "M", "L", "XL"],
     womensSizes: ["XS", "S", "M", "L"],
     sizes: ["S", "M", "L", "XL"],
-    status: "coming_soon",
+    status: "available",
     soldCount: 115
   }
 ];
