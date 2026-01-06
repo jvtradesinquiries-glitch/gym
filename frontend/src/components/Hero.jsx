@@ -90,23 +90,22 @@ const Hero = ({ onEarlyAccessClick }) => {
             <div className="hero-shirts-mobile">
               <div className="hero-image-container hero-shirt-front">
                 <div className="hero-shirt-glow-layer" />
-                <img 
+                <OptimizedImage
                   src={frontSanitized || frontOriginal}
                   alt="Performance T-Shirt - Front View"
                   className="hero-shirt-single"
-                  loading="eager"
-                  decoding="async"
-                  fetchpriority="high"
+                  priority={true}
+                  placeholder="blur"
                 />
               </div>
               <div className="hero-image-container hero-shirt-back">
                 <div className="hero-shirt-glow-layer" />
-                <img 
+                <OptimizedImage
                   src={backSanitized || backOriginal}
                   alt="Performance T-Shirt - Back View"
                   className="hero-shirt-single"
-                  loading="eager"
-                  decoding="async"
+                  priority={true}
+                  placeholder="blur"
                 />
               </div>
             </div>
@@ -115,13 +114,12 @@ const Hero = ({ onEarlyAccessClick }) => {
             <>
               <div className="hero-image-container">
                 <div className="hero-shirt-glow-layer" />
-                <img 
+                <OptimizedImage
                   src={currentSanitized}
                   alt={`Performance T-Shirt - ${showBack ? 'Back' : 'Front'} View`}
                   className="hero-shirt-single"
-                  loading="eager"
-                  decoding="async"
-                  fetchpriority="high"
+                  priority={true}
+                  placeholder="blur"
                 />
               </div>
               
