@@ -284,6 +284,13 @@ const ProductCategories = () => {
                       <span className="product-price">${short.price}</span>
                     </div>
                     
+                    {/* Sold Count */}
+                    {short.soldCount && !isComingSoon && (
+                      <div className="product-sold-count">
+                        <span className="sold-icon">🔥</span> {short.soldCount.toLocaleString()} sold
+                      </div>
+                    )}
+                    
                     {/* Size Selector */}
                     <div className="size-selector">
                       {sizes.map((size) => (
