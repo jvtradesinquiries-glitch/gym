@@ -187,6 +187,13 @@ const ProductCategories = () => {
                       {/* Stock urgency removed - sold out/waitlist only */}
                     </div>
                     
+                    {/* Sold Count */}
+                    {shirt.soldCount && (
+                      <div className="product-sold-count">
+                        <span className="sold-icon">🔥</span> {shirt.soldCount.toLocaleString()} sold
+                      </div>
+                    )}
+                    
                     {/* Size Selector */}
                     <div className="size-selector">
                       {shirt.sizes.map((size) => (
