@@ -56,6 +56,12 @@ const ProductCard = ({ product, onClick }) => {
         <p className="product-variant-shop">{product.variant}</p>
         <p className="product-description-shop">{product.description}</p>
         
+        {product.soldCount && (
+          <p className="product-sold-count">
+            <span className="sold-icon">🔥</span> {product.soldCount.toLocaleString()} sold
+          </p>
+        )}
+        
         <div className="product-footer-shop">
           {product.inStock ? (
             <>
