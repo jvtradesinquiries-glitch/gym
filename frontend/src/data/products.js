@@ -43,7 +43,7 @@ export const products = [
     inStock: true,
     stock: { XS: 8, S: 10, M: 12, L: 18 },
     featured: true,
-    soldCount: 312
+    soldCount: 183
   },
   {
     id: 3,
@@ -64,7 +64,7 @@ export const products = [
     inStock: true,
     stock: { XS: 10, S: 12, M: 15, L: 20 },
     featured: true,
-    soldCount: 267
+    soldCount: 298
   },
   {
     id: 4,
@@ -84,7 +84,7 @@ export const products = [
     inStock: true,
     stock: { XS: 6, S: 14, M: 18, L: 22 },
     featured: true,
-    soldCount: 183
+    soldCount: 201
   },
   // Performance Shorts (with Men's/Women's option)
   {
