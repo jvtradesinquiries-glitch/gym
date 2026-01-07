@@ -14794,3 +14794,66 @@ a,
     margin: 6px 0 10px 0;
   }
 }
+
+/* Hero Image Loading States */
+.hero-image-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.loading-shimmer {
+  width: 60%;
+  height: 80%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Prevent progressive image loading appearance */
+.hero-shirt-single {
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+}
+
+.hero-shirt-single[src] {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Force full image load before showing */
+.hero-image-container {
+  transition: opacity 0.4s ease-in;
+}
+
+.hero-shirts-mobile {
+  transition: opacity 0.4s ease-in;
+}
+
+/* Show image once fully loaded */
+img.hero-shirt-single:not([style*="opacity: 0"]) {
+  opacity: 1;
+}
+
