@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { socialLinks } from '../data/mock';
 import { PaymentMethods } from './TrustBadges';
 
@@ -32,6 +33,8 @@ const YouTubeIcon = ({ size = 18 }) => (
 );
 
 const Footer = () => {
+  const { t } = useTranslation();
+  
   // Use window.open to bypass iframe restrictions in preview environment
   const openSocialLink = (url, e) => {
     e.preventDefault();
@@ -44,7 +47,7 @@ const Footer = () => {
         {/* Brand */}
         <div className="footer-brand">
           <h3 className="footer-logo">RAZE</h3>
-          <p className="footer-tagline">Built by Discipline</p>
+          <p className="footer-tagline">{t('footer.builtByDiscipline')}</p>
           <div className="social-links">
             <a href={socialLinks.instagram} aria-label="Instagram" onClick={(e) => openSocialLink(socialLinks.instagram, e)}>
               <InstagramIcon size={20} />
@@ -66,29 +69,29 @@ const Footer = () => {
 
         {/* Shop Column */}
         <div className="footer-section">
-          <h4 className="footer-heading">Shop</h4>
+          <h4 className="footer-heading">{t('footer.shop')}</h4>
           <ul className="footer-list">
-            <li><Link to="/products">All Products</Link></li>
-            <li><Link to="/size-guide">Size Guide</Link></li>
-            <li><Link to="/returns">Shipping & Returns</Link></li>
+            <li><Link to="/products">{t('footer.allProducts')}</Link></li>
+            <li><Link to="/size-guide">{t('footer.sizeGuide')}</Link></li>
+            <li><Link to="/returns">{t('footer.shippingReturns')}</Link></li>
           </ul>
         </div>
 
         {/* Company Column */}
         <div className="footer-section">
-          <h4 className="footer-heading">Company</h4>
+          <h4 className="footer-heading">{t('footer.company')}</h4>
           <ul className="footer-list">
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/faq">FAQ</Link></li>
+            <li><Link to="/about">{t('footer.about')}</Link></li>
+            <li><Link to="/faq">{t('footer.faq')}</Link></li>
           </ul>
         </div>
 
         {/* Support Column */}
         <div className="footer-section">
-          <h4 className="footer-heading">Support</h4>
+          <h4 className="footer-heading">{t('footer.support')}</h4>
           <ul className="footer-list">
-            <li><Link to="/track">Track Order</Link></li>
-            <li><a href="mailto:support@razetraining.com">Contact</a></li>
+            <li><Link to="/track">{t('footer.trackOrder')}</Link></li>
+            <li><a href="mailto:support@razetraining.com">{t('footer.contact')}</a></li>
           </ul>
         </div>
       </div>
@@ -98,7 +101,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <p className="footer-copyright">
-          © {new Date().getFullYear()} RAZE. All rights reserved.
+          {t('footer.copyright', { year: new Date().getFullYear() })}
         </p>
       </div>
     </footer>
