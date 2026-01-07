@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { useCart } from '../context/CartContext';
 import { Button } from '../components/ui/button';
 import { Trash2, Plus, Minus, Tag, Truck } from 'lucide-react';
+import { formatPrice } from '../utils/currency';
 
 const FREE_SHIPPING_THRESHOLD = 100;
 
 const Cart = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { cart, removeFromCart, updateQuantity, getCartTotals, getCartCount } = useCart();
 
@@ -83,7 +84,7 @@ const Cart = () => {
                   <p className="cart-item-variant">
                     {item.color} / {item.size}
                   </p>
-                  <p className="cart-item-price">${item.price}</p>
+                  <p className="cart-item-price">{formatPrice(item.price, i18n.language)}</p>
                 </div>
 
                 <div className="cart-item-quantity">
@@ -103,7 +104,7 @@ const Cart = () => {
                 </div>
 
                 <div className="cart-item-total">
-                  <p className="item-total-price">${(item.price * item.quantity).toFixed(2)}</p>
+                  <p className="item-total-price">{formatPrice(item.price * item.quantity, i18n.language)}</p>
                   <button
                     className="remove-btn"
                     onClick={() => removeFromCart(item.productId, item.color, item.size)}
@@ -121,7 +122,7 @@ const Cart = () => {
 
             <div className="summary-line">
               <span>{t('cart.subtotal')}</span>
-              <span>${subtotal.toFixed(2)}</span>
+              <span>{formatPrice(subtotal, i18n.language)}</span>
             </div>
 
             {discount > 0 && (
@@ -130,7 +131,7 @@ const Cart = () => {
                   <Tag size={14} />
                   {discountDescription.split('|')[0].trim()}
                 </span>
-                <span>-${discount.toFixed(2)}</span>
+                <span>-{formatPrice(discount, i18n.language)}</span>
               </div>
             )}
 
@@ -143,7 +144,7 @@ const Cart = () => {
 
             <div className="summary-line summary-total">
               <span>{t('cart.total')}</span>
-              <span>${total.toFixed(2)}</span>
+              <span>{formatPrice(total, i18n.language)}</span>
             </div>
 
             {/* Discount hints */}
