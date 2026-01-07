@@ -8,6 +8,8 @@ const Hero = ({ onEarlyAccessClick }) => {
   const [frontSanitized, setFrontSanitized] = useState(null);
   const [backSanitized, setBackSanitized] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [loadedImages, setLoadedImages] = useState({ front: false, back: false });
   
   const frontOriginal = heroProduct.image;
   const backOriginal = heroProduct.backImage;
