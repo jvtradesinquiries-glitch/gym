@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useCart } from '../context/CartContext';
 import { Button } from '../components/ui/button';
 import { Trash2, Plus, Minus, Tag, Truck } from 'lucide-react';
@@ -7,6 +8,7 @@ import { Trash2, Plus, Minus, Tag, Truck } from 'lucide-react';
 const FREE_SHIPPING_THRESHOLD = 100;
 
 const Cart = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { cart, removeFromCart, updateQuantity, getCartTotals, getCartCount } = useCart();
 
@@ -23,10 +25,10 @@ const Cart = () => {
       <div className="cart-page">
         <div className="container">
           <div className="cart-empty">
-            <h1 className="cart-title">Your Cart</h1>
-            <p className="cart-empty-message">Your cart is empty</p>
+            <h1 className="cart-title">{t('cart.title')}</h1>
+            <p className="cart-empty-message">{t('cart.empty')}</p>
             <Link to="/#collection">
-              <Button className="btn-primary">Continue Shopping</Button>
+              <Button className="btn-primary">{t('cart.continueShopping')}</Button>
             </Link>
           </div>
         </div>
@@ -37,7 +39,7 @@ const Cart = () => {
   return (
     <div className="cart-page">
       <div className="container">
-        <h1 className="cart-title">Your Cart ({getCartCount()} {getCartCount() === 1 ? 'item' : 'items'})</h1>
+        <h1 className="cart-title">{t('cart.title')} ({getCartCount()} {getCartCount() === 1 ? 'item' : 'items'})</h1>
 
         {/* Free Shipping Progress Bar */}
         <div className="free-shipping-banner">
@@ -115,10 +117,10 @@ const Cart = () => {
 
           {/* Order Summary */}
           <div className="cart-summary">
-            <h2 className="summary-title">Order Summary</h2>
+            <h2 className="summary-title">{t('checkout.orderSummary')}</h2>
 
             <div className="summary-line">
-              <span>Subtotal</span>
+              <span>{t('cart.subtotal')}</span>
               <span>${subtotal.toFixed(2)}</span>
             </div>
 
@@ -133,14 +135,14 @@ const Cart = () => {
             )}
 
             <div className="summary-line">
-              <span>Shipping</span>
-              <span>Calculated at checkout</span>
+              <span>{t('cart.shipping')}</span>
+              <span>{t('cart.shippingCalculated')}</span>
             </div>
 
             <div className="summary-divider"></div>
 
             <div className="summary-line summary-total">
-              <span>Total</span>
+              <span>{t('cart.total')}</span>
               <span>${total.toFixed(2)}</span>
             </div>
 
@@ -155,11 +157,11 @@ const Cart = () => {
               className="btn-primary btn-large"
               onClick={handleCheckout}
             >
-              Proceed to Checkout
+              {t('cart.checkout')}
             </Button>
 
             <Link to="/#products" className="continue-shopping">
-              Continue Shopping
+              {t('cart.continueShopping')}
             </Link>
           </div>
         </div>
