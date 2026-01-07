@@ -1,9 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Badge } from './ui/badge';
 import { Star } from 'lucide-react';
 
 const ProductCard = ({ product, onClick }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -17,7 +19,7 @@ const ProductCard = ({ product, onClick }) => {
   };
 
   const getStockStatus = () => {
-    if (!product.inStock) return 'Sold Out';
+    if (!product.inStock) return t('product.soldOut');
     return null;
   };
 
@@ -43,7 +45,7 @@ const ProductCard = ({ product, onClick }) => {
         )}
         {product.mostPopular && (
           <Badge className="product-badge-shop popular">
-            <Star size={10} fill="currentColor" /> Most Popular
+            <Star size={10} fill="currentColor" /> {t('product.mostPopular')}
           </Badge>
         )}
         {stockStatus && (
@@ -58,7 +60,7 @@ const ProductCard = ({ product, onClick }) => {
         
         {product.soldCount && (
           <p className="product-sold-count">
-            <span className="sold-icon">🔥</span> {product.soldCount.toLocaleString()} sold
+            <span className="sold-icon">🔥</span> {t('product.soldCount', { count: product.soldCount.toLocaleString() })}
           </p>
         )}
         
@@ -71,7 +73,7 @@ const ProductCard = ({ product, onClick }) => {
                 )}
                 <span className="current-price">${product.price}</span>
               </div>
-              <span className="shop-link">Shop →</span>
+              <span className="shop-link">{t('product.shop')}</span>
             </>
           ) : (
             <span className="product-status-shop">{stockStatus}</span>
