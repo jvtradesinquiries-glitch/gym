@@ -40,6 +40,13 @@ const Hero = ({ onEarlyAccessClick }) => {
     };
     
     decodeImages();
+    
+    // Show skeleton for minimum 800ms so users can see the loading state
+    const minDisplayTime = setTimeout(() => {
+      setShowSkeleton(false);
+    }, 800);
+    
+    return () => clearTimeout(minDisplayTime);
   }, [frontOriginal, backOriginal]);
 
   useEffect(() => {
