@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { useToast } from '../hooks/use-toast';
 
 const Login = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const { login, loginWithGoogle, isAuthenticated } = useAuth();
@@ -72,7 +74,7 @@ const Login = () => {
       <div className="container">
         <div className="auth-container">
           <div className="auth-header">
-            <h1 className="auth-title">Log In</h1>
+            <h1 className="auth-title">{t('auth.signIn')}</h1>
             <p className="auth-subtitle">Welcome back to RAZE</p>
           </div>
 
@@ -90,7 +92,7 @@ const Login = () => {
                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
                 <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
               </svg>
-              Continue with Google
+              {t('auth.continueWithGoogle')}
             </Button>
 
             {/* Apple Login Button */}
@@ -119,7 +121,7 @@ const Login = () => {
           </div>
 
           <div className="auth-divider">
-            <span>or</span>
+            <span>{t('common.or')}</span>
           </div>
 
           {error && (
@@ -130,7 +132,7 @@ const Login = () => {
 
           <form onSubmit={handleSubmit} className="auth-form">
             <div className="form-field">
-              <label htmlFor="email" className="form-label">Email</label>
+              <label htmlFor="email" className="form-label">{t('auth.email')}</label>
               <Input
                 id="email"
                 name="email"
@@ -143,7 +145,7 @@ const Login = () => {
             </div>
 
             <div className="form-field">
-              <label htmlFor="password" className="form-label">Password</label>
+              <label htmlFor="password" className="form-label">{t('auth.password')}</label>
               <Input
                 id="password"
                 name="password"
@@ -160,13 +162,13 @@ const Login = () => {
               className="btn-primary btn-large"
               disabled={isLoading}
             >
-              {isLoading ? 'Logging in...' : 'Log In'}
+              {isLoading ? t('common.loading') : t('auth.signIn')}
             </Button>
           </form>
 
           <div className="auth-footer">
             <p className="auth-link-text">
-              Don't have an account? <Link to="/register" className="auth-link">Sign up</Link>
+              {t('auth.noAccount')} <Link to="/register" className="auth-link">{t('auth.signUp')}</Link>
             </p>
           </div>
 
