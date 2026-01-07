@@ -10,6 +10,7 @@ const Hero = ({ onEarlyAccessClick }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [loadedImages, setLoadedImages] = useState({ front: false, back: false });
+  const [showSkeleton, setShowSkeleton] = useState(true);
   
   const frontOriginal = heroProduct.image;
   const backOriginal = heroProduct.backImage;
