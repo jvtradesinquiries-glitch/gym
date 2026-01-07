@@ -99,8 +99,8 @@ export const products = [
     color: 'Black',
     logo: 'Cyan',
     images: [
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/c4dg91vy_5.png',
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/0zp1wq7a_1.png'
+      '/images/products/c4dg91vy_5.webp',
+      '/images/products/0zp1wq7a_1.webp'
     ],
     mensSizes: ['S', 'M', 'L', 'XL'],
     womensSizes: ['XS', 'S', 'M', 'L'],
@@ -122,8 +122,8 @@ export const products = [
     color: 'Black',
     logo: 'Silver',
     images: [
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/lauo11fr_6.png',
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/0zp1wq7a_1.png'
+      '/images/products/lauo11fr_6.webp',
+      '/images/products/0zp1wq7a_1.webp'
     ],
     mensSizes: ['S', 'M', 'L', 'XL'],
     womensSizes: ['XS', 'S', 'M', 'L'],
