@@ -17,6 +17,28 @@ const Hero = ({ onEarlyAccessClick }) => {
   // Preload hero images immediately on mount
   useEffect(() => {
     preloadCriticalImages([frontOriginal, backOriginal]);
+    
+    // Force decode images before showing
+    const decodeImages = async () => {
+      const img1 = new Image();
+      const img2 = new Image();
+      
+      img1.src = frontOriginal;
+      img2.src = backOriginal;
+      
+      try {
+        await Promise.all([
+          img1.decode(),
+          img2.decode()
+        ]);
+        // Images fully decoded, they'll display instantly now
+      } catch (e) {
+        // Fallback if decode fails
+        console.log('Image decode failed, using normal load');
+      }
+    };
+    
+    decodeImages();
   }, [frontOriginal, backOriginal]);
 
   useEffect(() => {
