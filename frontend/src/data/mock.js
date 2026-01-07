@@ -24,9 +24,9 @@ export const heroProduct = {
   name: "Performance T-Shirt",
   color: "Black / Cyan",
   // Front view - clean transparent PNG
-  image: "https://customer-assets.emergentagent.com/job_50f93784-f8d0-443f-a597-de8e9d961d04/artifacts/drkvr2gi_3.png",
+  image: "/images/products/drkvr2gi_3.webp",
   // Back view - cyan logo with "Built by Discipline" design
-  backImage: "https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/uut87a31_dsw1.png"
+  backImage: "/images/products/uut87a31_dsw1.webp"
 };
 
 // All shirt variants (4 styles)
