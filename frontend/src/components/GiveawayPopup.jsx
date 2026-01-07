@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { giveawayPopup, emails } from '../utils/storage';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ const API_URL = process.env.REACT_APP_BACKEND_URL;
 const RAZE_LOGO = 'https://customer-assets.emergentagent.com/job_simple-greeting-395/artifacts/7vw9prpd_blue.png';
 
 const GiveawayPopup = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -118,7 +120,7 @@ const GiveawayPopup = () => {
               />
             </div>
             <h2 className="giveaway-title">
-              WIN A FREE RAZE PERFORMANCE SET
+              {t('popup.giveaway.title')}
             </h2>
             <p className="giveaway-choice-line">
               <span className="giveaway-highlight">(Shirt + Shorts)</span> <span className="giveaway-choice-text">OF YOUR CHOICE</span>
@@ -127,7 +129,7 @@ const GiveawayPopup = () => {
             <form onSubmit={handleSubmit} className="giveaway-form">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t('newsletter.placeholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="giveaway-input"
@@ -141,7 +143,7 @@ const GiveawayPopup = () => {
                 className="giveaway-btn"
                 disabled={isLoading}
               >
-                {isLoading ? 'Entering...' : 'Enter Giveaway'}
+                {isLoading ? t('common.loading') : t('popup.giveaway.button')}
               </button>
             </form>
 
