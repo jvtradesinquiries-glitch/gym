@@ -28,7 +28,18 @@ Restore and enhance the RAZE Training e-commerce application from the user's Git
 - **Auto-Detection**: Uses browser language preference
 - **Persistence**: Language choice saved to localStorage and cookies
 - **Manual Selection**: Language selector dropdown in header
-- **Coverage**: Header, Footer, Hero, TrustBar, Newsletter, Cart, Auth pages, Product cards
+- **Coverage**: Header, Footer, Hero, TrustBar, Newsletter, Cart, Auth pages, Product cards, Popups
+
+### Currency Localization (Completed January 2025)
+- **Region-Specific Currencies**:
+  - USD ($) - English
+  - EUR (€) - Spanish, French, German, Portuguese, Italian, Dutch
+  - JPY (¥) - Japanese
+  - CNY (¥) - Chinese
+  - KRW (₩) - Korean
+- **Exchange Rate Conversion**: Automatic conversion from USD base prices
+- **Proper Formatting**: Symbol positioning (before/after), decimal handling
+- **Coverage**: Product cards, Cart, Checkout, Bundle banners
 
 ## Architecture
 
@@ -43,8 +54,8 @@ Restore and enhance the RAZE Training e-commerce application from the user's Git
 │   │   ├── pages/       # Page components
 │   │   ├── context/     # React contexts (Auth, Cart, Wishlist)
 │   │   ├── data/        # Product data (products.js, mock.js)
-│   │   ├── locales/     # Translation JSON files
-│   │   ├── utils/       # Utility functions
+│   │   ├── locales/     # Translation JSON files (10 languages)
+│   │   ├── utils/       # Utility functions (currency.js, etc.)
 │   │   ├── i18n.js      # i18next configuration
 │   │   └── App.js       # Main React app
 │   └── public/images/   # Local compressed product images
@@ -82,4 +93,4 @@ Restore and enhance the RAZE Training e-commerce application from the user's Git
 3. Admin dashboard translation
 
 ## Last Updated
-January 7, 2025 - Multi-language support completed with 10 languages and 100% test pass rate
+January 7, 2025 - Added currency localization with region-specific currencies (USD, EUR, JPY, CNY, KRW)
