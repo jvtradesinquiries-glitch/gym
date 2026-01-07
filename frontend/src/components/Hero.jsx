@@ -116,8 +116,8 @@ const Hero = ({ onEarlyAccessClick }) => {
 
         {/* Hero shirt display */}
         <div className="hero-product-display">
-          {/* Loading skeleton */}
-          {!imagesLoaded && (
+          {/* Loading skeleton - shows for min 800ms OR until images loaded */}
+          {(showSkeleton || !imagesLoaded) && (
             <div className="hero-image-loading">
               <div className="loading-shimmer"></div>
             </div>
@@ -125,7 +125,7 @@ const Hero = ({ onEarlyAccessClick }) => {
           
           {isMobile ? (
             /* Mobile: Show both shirts side by side */
-            <div className="hero-shirts-mobile" style={{ opacity: imagesLoaded ? 1 : 0 }}>
+            <div className="hero-shirts-mobile" style={{ opacity: (!showSkeleton && imagesLoaded) ? 1 : 0 }}>
               <div className="hero-image-container hero-shirt-front">
                 <div className="hero-shirt-glow-layer" />
                 <img 
@@ -159,7 +159,7 @@ const Hero = ({ onEarlyAccessClick }) => {
           ) : (
             /* Desktop: Show single shirt with toggle */
             <>
-              <div className="hero-image-container" style={{ opacity: imagesLoaded ? 1 : 0 }}>
+              <div className="hero-image-container" style={{ opacity: (!showSkeleton && imagesLoaded) ? 1 : 0 }}>
                 <div className="hero-shirt-glow-layer" />
                 <img 
                   src={currentSanitized}
