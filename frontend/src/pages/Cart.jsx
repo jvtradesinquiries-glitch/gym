@@ -46,13 +46,13 @@ const Cart = () => {
           {hasFreeShipping ? (
             <div className="free-shipping-unlocked">
               <Truck size={20} />
-              <span>You've unlocked <strong>FREE shipping!</strong></span>
+              <span>{"You've"} unlocked <strong>FREE shipping!</strong></span>
             </div>
           ) : (
             <div className="free-shipping-progress">
               <div className="shipping-message">
                 <Truck size={18} />
-                <span>You're <strong>${amountToFreeShipping.toFixed(2)}</strong> away from <strong>FREE shipping!</strong></span>
+                <span>{"You're"} <strong>${amountToFreeShipping.toFixed(2)}</strong> away from <strong>FREE shipping!</strong></span>
               </div>
               <div className="shipping-progress-bar">
                 <div 
