@@ -86,9 +86,16 @@ const Hero = ({ onEarlyAccessClick }) => {
 
         {/* Hero shirt display */}
         <div className="hero-product-display">
+          {/* Loading skeleton */}
+          {!imagesLoaded && (
+            <div className="hero-image-loading">
+              <div className="loading-shimmer"></div>
+            </div>
+          )}
+          
           {isMobile ? (
             /* Mobile: Show both shirts side by side */
-            <div className="hero-shirts-mobile">
+            <div className="hero-shirts-mobile" style={{ opacity: imagesLoaded ? 1 : 0 }}>
               <div className="hero-image-container hero-shirt-front">
                 <div className="hero-shirt-glow-layer" />
                 <img 
@@ -98,6 +105,10 @@ const Hero = ({ onEarlyAccessClick }) => {
                   loading="eager"
                   decoding="async"
                   fetchpriority="high"
+                  onLoad={() => {
+                    setLoadedImages(prev => ({ ...prev, front: true }));
+                    if (loadedImages.back) setImagesLoaded(true);
+                  }}
                 />
               </div>
               <div className="hero-image-container hero-shirt-back">
@@ -108,13 +119,17 @@ const Hero = ({ onEarlyAccessClick }) => {
                   className="hero-shirt-single"
                   loading="eager"
                   decoding="async"
+                  onLoad={() => {
+                    setLoadedImages(prev => ({ ...prev, back: true }));
+                    if (loadedImages.front) setImagesLoaded(true);
+                  }}
                 />
               </div>
             </div>
           ) : (
             /* Desktop: Show single shirt with toggle */
             <>
-              <div className="hero-image-container">
+              <div className="hero-image-container" style={{ opacity: imagesLoaded ? 1 : 0 }}>
                 <div className="hero-shirt-glow-layer" />
                 <img 
                   src={currentSanitized}
@@ -123,6 +138,7 @@ const Hero = ({ onEarlyAccessClick }) => {
                   loading="eager"
                   decoding="async"
                   fetchpriority="high"
+                  onLoad={() => setImagesLoaded(true)}
                 />
               </div>
               
