@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 import { heroProduct } from '../data/mock';
 import { getSanitizedImage, preloadCriticalImages } from '../utils/imageSanitizer';
 
 const Hero = ({ onEarlyAccessClick }) => {
+  const { t } = useTranslation();
   const [showBack, setShowBack] = useState(false);
   const [frontSanitized, setFrontSanitized] = useState(null);
   const [backSanitized, setBackSanitized] = useState(null);
@@ -98,9 +100,9 @@ const Hero = ({ onEarlyAccessClick }) => {
         {/* Text content */}
         <div className="hero-content">
           <h1 className="hero-title">RAZE</h1>
-          <p className="hero-tagline">BUILT BY DISCIPLINE</p>
+          <p className="hero-tagline">{t('hero.tagline')}</p>
           <p className="hero-description">
-            Minimalist performance training wear engineered for gymnastics — Designed for those who value freedom of movement, in and out of training.
+            {t('hero.description')}
           </p>
           <div className="hero-cta">
             <Button 
@@ -109,7 +111,7 @@ const Hero = ({ onEarlyAccessClick }) => {
                 document.getElementById('collection')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              SHOP NOW
+              {t('hero.shopNow')}
             </Button>
           </div>
         </div>
@@ -178,13 +180,13 @@ const Hero = ({ onEarlyAccessClick }) => {
                   className={`toggle-btn ${!showBack ? 'active' : ''}`}
                   onClick={() => setShowBack(false)}
                 >
-                  Front
+                  {t('hero.front')}
                 </button>
                 <button 
                   className={`toggle-btn ${showBack ? 'active' : ''}`}
                   onClick={() => setShowBack(true)}
                 >
-                  Back
+                  {t('hero.back')}
                 </button>
               </div>
             </>
