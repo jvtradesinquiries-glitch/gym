@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Badge } from './ui/badge';
 import { Star } from 'lucide-react';
+import { formatPrice } from '../utils/currency';
 
 const ProductCard = ({ product, onClick }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -69,9 +70,9 @@ const ProductCard = ({ product, onClick }) => {
             <>
               <div className="product-price-shop">
                 {product.originalPrice && (
-                  <span className="original-price">${product.originalPrice}</span>
+                  <span className="original-price">{formatPrice(product.originalPrice, i18n.language)}</span>
                 )}
-                <span className="current-price">${product.price}</span>
+                <span className="current-price">{formatPrice(product.price, i18n.language)}</span>
               </div>
               <span className="shop-link">{t('product.shop')}</span>
             </>
