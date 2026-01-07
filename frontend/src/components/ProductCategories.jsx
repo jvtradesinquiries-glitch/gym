@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { shirts, shorts } from '../data/mock';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
@@ -8,6 +9,7 @@ import ProductModal from './ProductModal';
 import WaitlistModal from './WaitlistModal';
 import SanitizedImage from './SanitizedImage';
 import { initializeStockCounts } from '../utils/stockUrgency';
+import { formatPrice } from '../utils/currency';
 
 // Products that should show "Only X left" urgency badge
 const URGENCY_PRODUCT_IDS = [1, 3, 5]; // Black/Cyan shirt, Grey/Cyan shirt, Black/Cyan shorts
@@ -16,6 +18,7 @@ const URGENCY_PRODUCT_IDS = [1, 3, 5]; // Black/Cyan shirt, Grey/Cyan shirt, Bla
 const WAITLIST_MODE = true;
 
 const ProductCategories = () => {
+  const { t, i18n } = useTranslation();
   const [selectedSizes, setSelectedSizes] = useState({});
   const [selectedGender, setSelectedGender] = useState({}); // Track Men's/Women's selection for shorts
   const [addedToCart, setAddedToCart] = useState({});
@@ -131,8 +134,8 @@ const ProductCategories = () => {
         {/* Single focused bundle banner */}
         <div className="bundle-banner">
           <div className="bundle-banner-content">
-            <span className="bundle-main">Complete the set — Performance Shirt + Shorts for <span className="bundle-original-price">$100</span> <strong>$69</strong></span>
-            <span className="bundle-subtext">Built to move together. Save $31.</span>
+            <span className="bundle-main">Complete the set — Performance Shirt + Shorts for <span className="bundle-original-price">{formatPrice(100, i18n.language)}</span> <strong>{formatPrice(69, i18n.language)}</strong></span>
+            <span className="bundle-subtext">Built to move together. Save {formatPrice(31, i18n.language)}.</span>
           </div>
         </div>
 
@@ -181,16 +184,16 @@ const ProductCategories = () => {
                     <div className="product-variant">{shirt.variant}</div>
                     <div className="product-price-row">
                       {shirt.price < 65 && (
-                        <span className="product-original-price">$65</span>
+                        <span className="product-original-price">{formatPrice(65, i18n.language)}</span>
                       )}
-                      <span className="product-price">${shirt.price}</span>
+                      <span className="product-price">{formatPrice(shirt.price, i18n.language)}</span>
                       {/* Stock urgency removed - sold out/waitlist only */}
                     </div>
                     
                     {/* Sold Count */}
                     {shirt.soldCount && (
                       <div className="product-sold-count">
-                        <span className="sold-icon">🔥</span> {shirt.soldCount.toLocaleString()} sold
+                        <span className="sold-icon">🔥</span> {t('product.soldCount', { count: shirt.soldCount.toLocaleString() })}
                       </div>
                     )}
                     
@@ -212,12 +215,12 @@ const ProductCategories = () => {
                       className={`btn-add-to-cart ${isAdded ? 'added' : ''} waitlist-btn`}
                       onClick={() => handleAddToCart(shirt, true)}
                     >
-                      <Lock size={16} /> Join Waitlist
+                      <Lock size={16} /> {t('product.joinWaitlist')}
                     </button>
 
                     {/* Bundle nudge */}
                     <p className="bundle-upsell">
-                      Pair with matching shorts — <span className="bundle-link">Bundle for $69</span>
+                      Pair with matching shorts — <span className="bundle-link">Bundle for {formatPrice(69, i18n.language)}</span>
                     </p>
                   </div>
                 </div>
@@ -279,15 +282,15 @@ const ProductCategories = () => {
                     <div className="product-variant">{short.variant}</div>
                     <div className="product-price-row">
                       {short.price < 75 && (
-                        <span className="product-original-price">$75</span>
+                        <span className="product-original-price">{formatPrice(75, i18n.language)}</span>
                       )}
-                      <span className="product-price">${short.price}</span>
+                      <span className="product-price">{formatPrice(short.price, i18n.language)}</span>
                     </div>
                     
                     {/* Sold Count */}
                     {short.soldCount && !isComingSoon && (
                       <div className="product-sold-count">
-                        <span className="sold-icon">🔥</span> {short.soldCount.toLocaleString()} sold
+                        <span className="sold-icon">🔥</span> {t('product.soldCount', { count: short.soldCount.toLocaleString() })}
                       </div>
                     )}
                     
@@ -308,20 +311,20 @@ const ProductCategories = () => {
                     {/* Coming Soon / Join Waitlist */}
                     {isComingSoon ? (
                       <button className="btn-coming-soon" disabled>
-                        <Clock size={16} /> Coming Soon
+                        <Clock size={16} /> {t('product.comingSoon')}
                       </button>
                     ) : (
                       <button 
                         className="btn-add-to-cart waitlist-btn"
                         onClick={() => handleAddToCart(short, false)}
                       >
-                        <Lock size={16} /> Join Waitlist
+                        <Lock size={16} /> {t('product.joinWaitlist')}
                       </button>
                     )}
 
                     {/* Bundle nudge */}
                     <p className="bundle-upsell">
-                      Complete the set — <span className="bundle-link">Bundle for $69</span>
+                      Complete the set — <span className="bundle-link">Bundle for {formatPrice(69, i18n.language)}</span>
                     </p>
                   </div>
                 </div>
