@@ -14,8 +14,8 @@ export const products = [
     color: 'Black',
     logo: 'Cyan',
     images: [
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/69vwy1yl_ee.png',
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/uut87a31_dsw1.png'
+      '/images/products/69vwy1yl_ee.webp',
+      '/images/products/uut87a31_dsw1.webp'
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     inStock: true,
@@ -36,8 +36,8 @@ export const products = [
     color: 'Black',
     logo: 'Silver',
     images: [
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/s3nitfxo_2.png',
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/rp49piw5_21.jpg'
+      '/images/products/s3nitfxo_2.webp',
+      '/images/products/rp49piw5_21.webp'
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     inStock: true,
@@ -57,8 +57,8 @@ export const products = [
     color: 'Grey',
     logo: 'Cyan',
     images: [
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/jf6ahqpn_4.png',
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/h5tbyhj3_8.jpg'
+      '/images/products/jf6ahqpn_4.webp',
+      '/images/products/h5tbyhj3_8.webp'
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     inStock: true,
@@ -78,7 +78,7 @@ export const products = [
     color: 'Grey',
     logo: 'White',
     images: [
-      'https://customer-assets.emergentagent.com/job_c568bc3b-5c5d-4cd8-bacb-54177a8430c8/artifacts/pr4hpazn_5.png'
+      '/images/products/pr4hpazn_5.webp'
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     inStock: true,
