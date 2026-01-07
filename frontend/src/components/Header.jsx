@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, ShoppingCart, User, Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useWishlist } from '../context/WishlistContext';
+import LanguageSelector from './LanguageSelector';
 
 const Header = () => {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { getCartCount } = useCart();
@@ -45,18 +48,21 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="desktop-nav">
             <Link to="/products" className="nav-link">
-              Products
+              {t('nav.products')}
             </Link>
             <button onClick={() => scrollToSection('features')} className="nav-link">
-              Why RAZE
+              {t('nav.whyRaze')}
             </button>
             <button onClick={() => scrollToSection('newsletter')} className="nav-link">
-              Early Access
+              {t('nav.earlyAccess')}
             </button>
           </nav>
 
           {/* Cart and User Actions */}
           <div className="header-actions">
+            {/* Language Selector */}
+            <LanguageSelector />
+
             {/* Wishlist Icon */}
             <Link to="/wishlist" className="wishlist-icon-btn">
               <Heart size={22} strokeWidth={2} />
@@ -87,30 +93,30 @@ const Header = () => {
                   {isAuthenticated ? (
                     <>
                       <Link to="/account" className="dropdown-item" onClick={() => setIsUserMenuOpen(false)}>
-                        Account
+                        {t('nav.account')}
                       </Link>
                       <Link to="/account/orders" className="dropdown-item" onClick={() => setIsUserMenuOpen(false)}>
-                        Orders
+                        {t('nav.orders')}
                       </Link>
                       <Link to="/account/credit" className="dropdown-item" onClick={() => setIsUserMenuOpen(false)}>
-                        RAZE Credit
+                        {t('nav.razeCredit')}
                       </Link>
                       {user?.is_admin && (
                         <Link to="/admin" className="dropdown-item admin-link" onClick={() => setIsUserMenuOpen(false)}>
-                          Admin Dashboard
+                          {t('nav.adminDashboard')}
                         </Link>
                       )}
                       <button className="dropdown-item" onClick={handleLogout}>
-                        Log Out
+                        {t('nav.logOut')}
                       </button>
                     </>
                   ) : (
                     <>
                       <Link to="/login" className="dropdown-item" onClick={() => setIsUserMenuOpen(false)}>
-                        Log In
+                        {t('nav.logIn')}
                       </Link>
                       <Link to="/register" className="dropdown-item" onClick={() => setIsUserMenuOpen(false)}>
-                        Sign Up
+                        {t('nav.signUp')}
                       </Link>
                     </>
                   )}
@@ -133,30 +139,30 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="mobile-nav">
             <Link to="/products" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-              Products
+              {t('nav.products')}
             </Link>
             <button onClick={() => scrollToSection('features')} className="nav-link">
-              Why RAZE
+              {t('nav.whyRaze')}
             </button>
             <button onClick={() => scrollToSection('newsletter')} className="nav-link">
-              Early Access
+              {t('nav.earlyAccess')}
             </button>
             {isAuthenticated ? (
               <>
                 <Link to="/account" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                  Account
+                  {t('nav.account')}
                 </Link>
                 <button className="nav-link" onClick={handleLogout}>
-                  Log Out
+                  {t('nav.logOut')}
                 </button>
               </>
             ) : (
               <>
                 <Link to="/login" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                  Log In
+                  {t('nav.logIn')}
                 </Link>
                 <Link to="/register" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                  Sign Up
+                  {t('nav.signUp')}
                 </Link>
               </>
             )}
